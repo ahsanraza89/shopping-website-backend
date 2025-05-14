@@ -76,8 +76,10 @@ export const getCart = async (req, res) => {
 export const removeFromCart = async (req, res) => {
   try {
     const userId = req.user.id; // User ID from the authentication middleware
-    const { productId } = req.body;
 
+    // const { id } = req.param;
+    const productId = req.params.id;
+    
     const cart = await Cart.findOne({ userId });
 
     if (!cart) {
@@ -114,7 +116,11 @@ export const removeFromCart = async (req, res) => {
 export const updateQuantity = async (req, res) => {
   try {
     const userId = req.user.id; // User ID from the authentication middleware
-    const { productId, quantity } = req.body;
+    console.log("🚀 ~ updateQuantity ~ userId:", userId)
+    const {  quantity } = req.body;
+    console.log("🚀 ~ updateQuantity ~ quantity:", quantity)
+    const productId = req.params.id; // Product ID from the request parameters
+    console.log("🚀 ~ updateQuantity ~ productId:", productId)
 
     const cart = await Cart.findOne({ userId });
 

@@ -11,7 +11,7 @@ router.post("/add" ,protect ,  addToCart);
 router.get("/get", protect, getCart);
 
 // Remove item from cart (DELETE)
-router.delete("remove/:id", protect, removeFromCart);
+router.delete("/remove/:id", protect, removeFromCart);
 
 // Update item quantity (PUT)
 router.put("/quantity/:id", protect, updateQuantity);
