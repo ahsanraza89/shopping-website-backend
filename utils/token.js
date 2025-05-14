@@ -15,6 +15,19 @@ export const generateToken = (user) => {
   );
 };
 
+export const generateTokenForgetPass = (user) => {
+  return jwt.sign(
+    {
+      id: user._id,
+      email: user.email,
+    },
+
+    JWT_SECRET,
+
+    { expiresIn: "10m" }
+  );
+};
+
 
 /**
  * Verify a JWT token
